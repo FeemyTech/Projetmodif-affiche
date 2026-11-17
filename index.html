@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mes tâches et affiches</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Mon espace créatif</h1>
+    <nav>
+      <button class="tab active" data-tab="tasks">Tâches</button>
+      <button class="tab" data-tab="editor">Éditeur d’affiche</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="tasks" class="panel">
+      <h2>Mes tâches</h2>
+      <form id="task-form">
+        <input id="task-input" placeholder="Nouvelle tâche…" required>
+        <button>Ajouter</button>
+      </form>
+      <div class="filters">
+        <button data-filter="all">Toutes</button>
+        <button data-filter="todo">À faire</button>
+        <button data-filter="done">Terminées</button>
+      </div>
+      <ul id="task-list"></ul>
+    </section>
+
+    <section id="editor" class="panel hidden">
+      <h2>Éditeur d’affiche</h2>
+      <p class="note">Les éléments d’une image importée ne deviennent pas automatiquement des calques modifiables. Ajoutez des calques par-dessus ou reconstruisez l’affiche manuellement.</p>
+
+      <div class="toolbar">
+        <button id="add-text">Ajouter texte</button>
+        <button id="add-rect">Ajouter rectangle</button>
+        <button id="add-circle">Ajouter cercle</button>
+        <label class="file-button">Importer image
+          <input id="image-file" type="file" accept="image/*">
+        </label>
+        <button id="delete-layer">Supprimer le calque</button>
+      </div>
+
+      <div class="workspace">
+        <div class="canvas-wrap">
+          <svg id="canvas" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 800 600" width="800" height="600"
+               aria-label="Aperçu de l’affiche"></svg>
+        </div>
+        <aside>
+          <h3>Calques</h3>
+          <ul id="layer-list"></ul>
+          <h3>Propriétés</h3>
+          <div id="properties">Sélectionnez un calque.</div>
+        </aside>
+      </div>
+
+      <div class="toolbar exports">
+        <button id="export-png">Exporter PNG</button>
+        <button id="export-svg">Exporter SVG</button>
+        <button id="export-json">Exporter JSON</button>
+        <label class="file-button">Importer JSON
+          <input id="json-file" type="file" accept=".json,application/json">
+        </label>
+        <button id="export-jsx">Exporter script Photoshop (.jsx)</button>
+      </div>
+      <p class="note">Le script Photoshop prend en charge les textes et formes simples. Les images importées et certains effets peuvent nécessiter une retouche manuelle.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
